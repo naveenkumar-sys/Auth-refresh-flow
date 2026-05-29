@@ -1,4 +1,5 @@
 import axios from "axios";
+import toast from "react-hot-toast";
 
 //api instance with interceptors
 const API = axios.create({
@@ -27,6 +28,10 @@ API.interceptors.response.use(
         //if request is failed, check for 401 error and if it is, try to refresh the token
 
         const originalRequest = error.config;
+        //this condition prevents infinite loop for the request to refresh endpoint When the failed request is:/user/refresh the interceptor says:"This IS the refresh endpoint itself. Don't try refreshing again. Just return the error."
+        if (originalRequest.url === "/user/refresh") {
+            return Promise.reject(error);
+        }
         //prevent infinite loop
         if (error.response?.status === 401 && !originalRequest._retry) {
 
