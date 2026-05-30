@@ -73,3 +73,26 @@ API.interceptors.response.use(
 );
 
 export default API;
+
+//complerte of this interceptor flow diagram is:
+// Create Product
+//      ↓
+// API.post("/product/create")
+//      ↓
+// Access token expired
+//      ↓
+// Backend returns 401
+//      ↓
+// Response Interceptor catches 401
+//      ↓
+// POST /user/refresh -> (use axios.post) (IMPORTANT: NOT API) -> 401 agin and again because we are using API.post instead of axios.post  and API is intercepting all the requests including the refresh token request
+//      ↓
+// New access token received
+//      ↓
+// originalRequest.headers.Authorization = newToken
+//      ↓
+// return API(originalRequest)
+//      ↓
+// Create Product called AGAIN automatically
+//      ↓
+// 200 Success

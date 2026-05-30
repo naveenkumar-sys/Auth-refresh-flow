@@ -42,8 +42,9 @@ const Home = () => {
                         Explore our latest collection of premium items designed to elevate your everyday experience.
                     </p>
                     {
-                      user&& user.role === "seller" && <button className=' m-5 cursor-pointer bg-indigo-600 text-white px-4 py-2 rounded-md' onClick={() => navigate("/dashboard")}>Dashboard</button>
+                        user && user.role === "seller" && <button className=' m-5 cursor-pointer bg-indigo-600 text-white px-4 py-2 rounded-md' onClick={() => navigate("/create-product")}>Create Product</button>
                     }
+
                 </div>
 
                 {/* Product Grid */}

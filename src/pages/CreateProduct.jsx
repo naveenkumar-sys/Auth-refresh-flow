@@ -142,6 +142,10 @@ const CreateProduct = () => {
                                         <option value="books">Books</option>
                                         <option value="clothing">Clothing</option>
                                         <option value="home">Home</option>
+                                        <option value="groceries">Groceries</option>
+                                        <option value="fashion">Fashion</option>
+                                        <option value="beauty">Beauty</option>
+                                        <option value="toys">Toys</option>
                                       </select>
                                     </div>
                                 </div>
